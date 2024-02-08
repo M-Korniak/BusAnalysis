@@ -6,3 +6,11 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Mac files
+.DS_Store
+src/.DS_Store
+
+# __pycache__ files
+__pycache__/
+src/__pycache__/
