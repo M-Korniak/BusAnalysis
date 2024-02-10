@@ -1,1 +1,1 @@
-__all__ = ['data_collection']
+__all__ = ['data_collection', 'data_analysis']

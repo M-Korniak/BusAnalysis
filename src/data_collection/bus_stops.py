@@ -14,6 +14,7 @@ def timetable_at_stop(stop_lines, folder_path='/Users/michalkorniak/Documents/Pr
             stop_id = stop.get('stop_id', '')
             stop_nr = stop.get('stop_nr', '')
             line = stop.get('line', '')
+            print(stop_id)
             if stop_id and stop_nr and line:
                 try:
                     data = requests.get(f'{url}&busstopId={stop_id}'
@@ -31,7 +32,6 @@ def lines_at_stop(stops, folder_path='/Users/michalkorniak/Documents/Programs/'
     apikey = '2b03b1a7-89a1-478e-974e-c2049ab91a5c'
     url = ('https://api.um.warszawa.pl/api/action/dbtimetable_get/'
            '?id=88cd555f-6f31-43ca-9de4-66c479ad5942')
-
     lines = []
     for stop in stops:
         stop_id = stop.get('zespol', '')
@@ -43,6 +43,7 @@ def lines_at_stop(stops, folder_path='/Users/michalkorniak/Documents/Programs/'
                 continue
             for line in data['result']:
                 if len(line['values'][0]['value']) == 3:
+                    print(stop_id, stop_nr, line['values'][0]['value'])
                     lines.append({'stop_id': stop_id, 'stop_nr': stop_nr, 'line': line['values'][0]['value']})
 
     timetable_at_stop(lines, folder_path)
@@ -79,7 +80,3 @@ def get_bus_stops(folder_path='/Users/michalkorniak/Documents/Programs'
         for stop in output:
             csv_writer.writerow([stop.get('zespol', ''), stop.get('slupek', ''),
                                  stop.get('dlug_geo', ''), stop.get('szer_geo', '')])
-
-
-if __name__ == '__main__':
-    get_bus_stops()
