@@ -29,8 +29,8 @@ def plot_places_with_fast_buses(localizations, axs, axs2, path_to_geojson):
     fast_place = fast_place.sort_values(by='Fast_Percentage', ascending=False)
 
     fast_place = fast_place.head(10)
-    warsaw = gpd.read_file(path_to_geojson)
 
+    warsaw = gpd.read_file(path_to_geojson)
     warsaw.plot(ax=axs, color='lightgrey')
     axs.scatter(fast_place['Lon'], fast_place['Lat'], c=fast_place['Fast_Percentage'], cmap='coolwarm', s=100)
     axs.set_xlabel('Longitude')
@@ -38,7 +38,7 @@ def plot_places_with_fast_buses(localizations, axs, axs2, path_to_geojson):
     axs.set_title('Places with the highest percentage of fast buses')
     for i in range(len(fast_place)):
         axs.text(fast_place['Lon'].iloc[i], fast_place['Lat'].iloc[i],
-                 f'{100 * fast_place["Fast_Percentage"].iloc[i]:.2f}%')
+                 f'{100 * fast_place["Fast_Percentage"].iloc[i]:.2f}%', fontsize=7, ha='center')
 
     fast_place.index = range(len(fast_place))
     axs2.bar(fast_place.index, fast_place['Fast_Percentage'] * 100, color='blue')

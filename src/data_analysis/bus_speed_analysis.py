@@ -1,3 +1,4 @@
+from functools import cache
 import pandas as pd
 import numpy as np
 import datetime
@@ -24,6 +25,7 @@ def calculate_speed(lon1, lat1, lon2, lat2, time1, time2):
     return km / time
 
 
+@cache
 def bus_speed_analysis(path='/Users/michalkorniak/Documents/Programs/Python/'
                             'PycharmProjects/BusAnalysis/data/buses_localization_16:00.csv'):
     data = pd.read_csv(path, dtype={'Lines': str, 'VehicleNumber': str, 'Time': str, 'Lon': float, 'Lat': float})
@@ -57,31 +59,39 @@ def is_close(lon1, lat1, lon2, lat2, meters=500):
     return distance < meters
 
 
+@cache
 def bus_localization_speed(path='/Users/michalkorniak/Documents/Programs/Python/'
                                 'PycharmProjects/BusAnalysis/data/buses_localization_16:00.csv'):
     data = bus_speed_analysis(path)
     data = data.sample(frac=0.07, random_state=1)
     data.index = range(len(data))
     close_points = []
-    points_all_buses = {}
+    points_buses_count = {}
     points_fast_buses = {}
+    average_speed = {}
     for i in range(len(data)):
         for j in range(len(close_points)):
             if is_close(data['Lon'][i], data['Lat'][i], close_points[j][0], close_points[j][1]):
-                points_all_buses[close_points[j]] += 1
+                points_buses_count[close_points[j]] += 1
+                average_speed[close_points[j]] += data['Speed'][i]
                 if data['Speed'][i] > 50:
                     points_fast_buses[close_points[j]] += 1
                 break
         else:
             close_points.append((data['Lon'][i], data['Lat'][i]))
-            points_all_buses[close_points[-1]] = 1
+            points_buses_count[close_points[-1]] = 1
+            average_speed[close_points[-1]] = data['Speed'][i]
             if data['Speed'][i] > 50:
                 points_fast_buses[close_points[-1]] = 1
             else:
                 points_fast_buses[close_points[-1]] = 0
 
+    for point in average_speed:
+        average_speed[point] /= points_buses_count[point]
+
     return pd.DataFrame({'Lon': [close_points[i][0] for i in range(len(close_points))],
                          'Lat': [close_points[i][1] for i in range(len(close_points))],
-                         'Fast_Percentage': [points_fast_buses[close_points[i]] / points_all_buses[close_points[i]]
+                         'Fast_Percentage': [points_fast_buses[close_points[i]] / points_buses_count[close_points[i]]
                                              for i in range(len(close_points))],
-                         'All_Buses': [points_all_buses[close_points[i]] for i in range(len(close_points))]})
+                         'All_Buses': [points_buses_count[close_points[i]] for i in range(len(close_points))],
+                         'Average_Speed': [average_speed[close_points[i]] for i in range(len(close_points))]})

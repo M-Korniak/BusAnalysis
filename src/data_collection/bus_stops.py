@@ -1,5 +1,6 @@
 import requests
 import csv
+import random
 
 
 def timetable_at_stop(stop_lines, folder_path='/Users/michalkorniak/Documents/Programs'
@@ -33,6 +34,8 @@ def lines_at_stop(stops, folder_path='/Users/michalkorniak/Documents/Programs/'
     url = ('https://api.um.warszawa.pl/api/action/dbtimetable_get/'
            '?id=88cd555f-6f31-43ca-9de4-66c479ad5942')
     lines = []
+
+    stops = random.sample(stops, 300)
     for stop in stops:
         stop_id = stop.get('zespol', '')
         stop_nr = stop.get('slupek', '')
