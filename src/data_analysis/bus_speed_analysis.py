@@ -60,7 +60,7 @@ def is_close(lon1, lat1, lon2, lat2, meters=500):
 def bus_localization_speed(path='/Users/michalkorniak/Documents/Programs/Python/'
                                 'PycharmProjects/BusAnalysis/data/buses_localization_16:00.csv'):
     data = bus_speed_analysis(path)
-    data = data.sample(frac=0.1, random_state=1)
+    data = data.sample(frac=0.07, random_state=1)
     data.index = range(len(data))
     close_points = []
     points_all_buses = {}
