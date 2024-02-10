@@ -3,8 +3,7 @@ import csv
 import random
 
 
-def timetable_at_stop(stop_lines, folder_path='/Users/michalkorniak/Documents/Programs'
-                                              '/Python/PycharmProjects/BusAnalysis/data/'):
+def timetable_at_stop(stop_lines, folder_path='data/'):
     apikey = '2b03b1a7-89a1-478e-974e-c2049ab91a5c'
     url = 'https://api.um.warszawa.pl/api/action/dbtimetable_get/?id=e923fa0e-d96c-43f9-ae6e-60518c9f3238'
 
@@ -28,8 +27,7 @@ def timetable_at_stop(stop_lines, folder_path='/Users/michalkorniak/Documents/Pr
                             csv_writer.writerow([stop_id, stop_nr, line, timetable['value']])
 
 
-def lines_at_stop(stops, folder_path='/Users/michalkorniak/Documents/Programs/'
-                                     'Python/PycharmProjects/BusAnalysis/data/'):
+def lines_at_stop(stops, folder_path='data/'):
     apikey = '2b03b1a7-89a1-478e-974e-c2049ab91a5c'
     url = ('https://api.um.warszawa.pl/api/action/dbtimetable_get/'
            '?id=88cd555f-6f31-43ca-9de4-66c479ad5942')
@@ -58,8 +56,7 @@ def lines_at_stop(stops, folder_path='/Users/michalkorniak/Documents/Programs/'
             csv_writer.writerow([line['stop_id'], line['stop_nr'], line['line']])
 
 
-def get_bus_stops(folder_path='/Users/michalkorniak/Documents/Programs'
-                              '/Python/PycharmProjects/BusAnalysis/data/'):
+def get_bus_stops(folder_path='data/'):
     url = ('https://api.um.warszawa.pl/api/action/dbstore_get/'
            '?id=ab75c33d-3a26-4342-b36a-6e5fef0a3ac3&sortBy=id'
            '&apikey=2b03b1a7-89a1-478e-974e-c2049ab91a5c')

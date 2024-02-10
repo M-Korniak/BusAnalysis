@@ -38,12 +38,9 @@ def plot_jammed_places(localizations, axs, axs2, path_to_geojson, hour):
                           for i in range(len(places))], rotation=45)
 
 
-def plot_traffic_jam(path='/Users/michalkorniak/Documents/Programs/Python/'
-                          'PycharmProjects/BusAnalysis/data/buses_localization_16:00.csv',
-                     path_to_save='/Users/michalkorniak/Documents/Programs/Python/'
-                                  'PycharmProjects/BusAnalysis/analysis/',
-                     path_to_geojson='/Users/michalkorniak/Documents/Programs/Python/'
-                                     'PycharmProjects/BusAnalysis/data/warszawa.geojson'):
+def plot_traffic_jam(path='data/buses_localization_16:00.csv',
+                     path_to_save='analysis/',
+                     path_to_geojson='data/warszawa.geojson'):
     # warszawa.geojson link: https://github.com/andilabs/warszawa-dzielnice-geojson/blob/master/warszawa.geojson
     hour = path.split('_')[-1].split('.')[0]
     data = bus_speed_analysis.bus_speed_analysis(path)

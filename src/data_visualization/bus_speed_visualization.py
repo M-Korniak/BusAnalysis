@@ -50,12 +50,9 @@ def plot_places_with_fast_buses(localizations, axs, axs2, path_to_geojson):
                           for i in range(len(fast_place))], rotation=45)
 
 
-def plot_speed_visualization(path='/Users/michalkorniak/Documents/Programs/Python/'
-                                  'PycharmProjects/BusAnalysis/data/buses_localization_16:00.csv',
-                             path_to_save='/Users/michalkorniak/Documents/Programs/Python/'
-                                          'PycharmProjects/BusAnalysis/analysis/',
-                             path_to_geojson='/Users/michalkorniak/Documents/Programs/Python/'
-                                             'PycharmProjects/BusAnalysis/data/warszawa.geojson'):
+def plot_speed_visualization(path='data/buses_localization_16:00.csv',
+                             path_to_save='analysis/',
+                             path_to_geojson='data/warszawa.geojson'):
     # warszawa.geojson link: https://github.com/andilabs/warszawa-dzielnice-geojson/blob/master/warszawa.geojson
 
     # take hour from path

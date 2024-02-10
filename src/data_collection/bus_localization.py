@@ -9,8 +9,7 @@ url = ('https://api.um.warszawa.pl/api/action/busestrams_get/'
 
 
 def get_bus_localization(how_many_minutes=60,
-                         folder_path='/Users/michalkorniak/Documents/Programs'
-                                     '/Python/PycharmProjects/BusAnalysis/data/'):
+                         folder_path='data/'):
     current_time = time.strftime('%H:%M')
     localization_data = []
     for _ in range(3 * how_many_minutes):
