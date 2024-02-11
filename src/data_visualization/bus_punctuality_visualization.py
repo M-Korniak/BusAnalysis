@@ -42,7 +42,6 @@ def plot_stops_punctuality(data, axs, axs2, path_to_geojson):
                           for i in range(len(data))], rotation=45)
 
 
-
 def plot_bus_punctuality(path='data/buses_localization_16:00.csv',
                          path_to_save='analysis/',
                          path_to_geojson='data/warszawa.geojson',
@@ -65,4 +64,3 @@ def plot_bus_punctuality(path='data/buses_localization_16:00.csv',
 
     plt.tight_layout()
     plt.savefig(os.path.join(path_to_save, 'bus_punctuality.png'))
-

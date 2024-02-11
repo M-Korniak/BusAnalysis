@@ -58,4 +58,3 @@ def plot_traffic_jam(path='data/buses_localization_16:00.csv',
 
 if __name__ == "__main__":
     plot_traffic_jam()
-
