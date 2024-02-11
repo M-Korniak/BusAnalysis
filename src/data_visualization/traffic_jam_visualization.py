@@ -53,7 +53,7 @@ def plot_traffic_jam(path='data/buses_localization_16:00.csv',
     plot_jammed_places(localizations, axs[1], axs[2], path_to_geojson, hour)
 
     plt.tight_layout()
-    plt.savefig(os.path.join(path_to_save, f'traffic_jam_{hour}.png'))
+    plt.savefig(os.path.join(path_to_save, 'traffic_jam.png'))
 
 
 if __name__ == "__main__":

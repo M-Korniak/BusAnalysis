@@ -51,7 +51,7 @@ def add_delay_column(data, timetable):
 
 
 def bus_stops_punctuality(path_to_bus_localization='data/buses_localization_16:00.csv',
-                          path_to_bus_stops='data/stops.csv',
+                          path_to_bus_stops='data/bus_stops.csv',
                           path_to_timetable='data/timetable.csv'):
     data = pd.read_csv(path_to_bus_localization,
                        dtype={'Lines': str, 'VehicleNumber': str, 'Time': str, 'Lon': float, 'Lat': float})

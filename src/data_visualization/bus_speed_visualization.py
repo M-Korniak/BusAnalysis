@@ -56,8 +56,6 @@ def plot_speed_visualization(path='data/buses_localization_16:00.csv',
                              path_to_geojson='data/warszawa.geojson'):
     # warszawa.geojson link: https://github.com/andilabs/warszawa-dzielnice-geojson/blob/master/warszawa.geojson
 
-    # take hour from path
-    hour = path.split('_')[-1].split('.')[0]
     data = bus_speed_analysis.bus_speed_analysis(path)
     localizations = bus_speed_analysis.bus_localization_speed(path)
 
@@ -68,6 +66,6 @@ def plot_speed_visualization(path='data/buses_localization_16:00.csv',
     plot_places_with_fast_buses(localizations, axs[2], axs[3], path_to_geojson)
 
     plt.tight_layout()
-    plt.savefig(os.path.join(path_to_save, f'speed_visualization_{hour}.png'))
+    plt.savefig(os.path.join(path_to_save, 'speed_visualization.png'))
 
 
