@@ -20,3 +20,8 @@ data/*.csv
 
 # analysis files
 analysis/
+
+# build
+build/
+dist/
+*.egg-info/
