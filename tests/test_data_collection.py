@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import mock_open, patch
-import src.data_collection.bus_localization as bus_localization
+import src.data_collection.bus_location as bus_location
 import src.data_collection.bus_stops as bus_stops
 
 
@@ -12,7 +12,7 @@ class TestBusLocalization(unittest.TestCase):
         mock_requests.get.return_value.json.return_value = {'result': 'Błędna metoda lub parametry wywołania'}
         mock_time.sleep.return_value = None
         with patch('builtins.open', mock_open()) as mock_file:
-            bus_localization.get_bus_localization(1)
+            bus_location.get_bus_location(1)
             mock_file.assert_called_once_with('data/buses_localization_12:00.csv', 'w')
 
 

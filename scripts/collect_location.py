@@ -1,10 +1,10 @@
 import argparse
-from src.data_collection import bus_localization
+from src.data_collection import bus_location
 
 
 # Run this
 # script in the terminal:
-# python scripts/collect_localization.py --minutes 60 --folder data/
+# python scripts/collect_location.py --minutes 60 --folder data/
 # This will collect data for buses for 60 minutes and save it in the data/ folder
 
 def main():
@@ -16,7 +16,7 @@ def main():
                         help='folder to save data in')
     args = parser.parse_args()
 
-    bus_localization.get_bus_localization(args.minutes, args.folder)
+    bus_location.get_bus_location(args.minutes, args.folder)
 
 
 if __name__ == '__main__':

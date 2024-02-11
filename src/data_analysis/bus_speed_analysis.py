@@ -26,7 +26,7 @@ def calculate_speed(lon1, lat1, lon2, lat2, time1, time2):
 
 
 @cache
-def bus_speed_analysis(path='data/buses_localization_16:00.csv'):
+def bus_speed_analysis(path='data/buses_location_16:00.csv'):
     data = pd.read_csv(path, dtype={'Lines': str, 'VehicleNumber': str, 'Time': str, 'Lon': float, 'Lat': float})
     buses_speed = []
     for i in range(len(data) - 1):
@@ -59,7 +59,7 @@ def is_close(lon1, lat1, lon2, lat2, meters=500):
 
 
 @cache
-def bus_localization_speed(path='data/buses_localization_16:00.csv'):
+def bus_localization_speed(path='data/buses_location_16:00.csv'):
     data = bus_speed_analysis(path)
     data = data.sample(frac=0.07, random_state=1)
     data.index = range(len(data))

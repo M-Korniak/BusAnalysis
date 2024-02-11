@@ -8,8 +8,8 @@ url = ('https://api.um.warszawa.pl/api/action/busestrams_get/'
        'apikey=2b03b1a7-89a1-478e-974e-c2049ab91a5c&type=1')
 
 
-def get_bus_localization(how_many_minutes=60,
-                         folder_path='data/'):
+def get_bus_location(how_many_minutes=60,
+                     folder_path='data/'):
     current_time = time.strftime('%H:%M')
     localization_data = []
     for _ in range(3 * how_many_minutes):
@@ -28,7 +28,7 @@ def get_bus_localization(how_many_minutes=60,
                 continue
             localization_data.extend(data['result'])
 
-    with open(f'{folder_path}buses_localization_{current_time}.csv', 'w') as file:
+    with open(f'{folder_path}buses_location_{current_time}.csv', 'w') as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow(['Lines', 'VehicleNumber', 'Time', 'Lon', 'Lat'])
         localization_data.sort(key=lambda x: ((x['Lines']), int(x['VehicleNumber']),

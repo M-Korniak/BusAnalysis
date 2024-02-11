@@ -9,14 +9,14 @@ import src.data_visualization.bus_punctuality_visualization as bus_punctuality_v
 
 # Run this
 # script in the terminal:
-# python scripts/analyze_bus_data.py --path data/buses_localization_16:00.csv --output_folder analysis/
+# python scripts/analyze_bus_data.py --path data/buses_location_16:00.csv --output_folder analysis/
 # This will visualize the speed of buses and save the visualization in the analysis/ folder
 
 
 def main():
     parser = argparse.ArgumentParser(description='Visualize bus speed data')
 
-    parser.add_argument('--path', type=str, default='data/buses_localization_16:00.csv',
+    parser.add_argument('--path', type=str, default='data/buses_location_16:00.csv',
                         help='path to read data from')
     parser.add_argument('--output_folder', type=str, default='analysis/',
                         help='file to save the visualization in')
