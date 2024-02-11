@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import os
 import src.data_analysis.bus_speed_analysis as bus_speed_analysis
 import geopandas as gpd
 
@@ -67,6 +68,6 @@ def plot_speed_visualization(path='data/buses_localization_16:00.csv',
     plot_places_with_fast_buses(localizations, axs[2], axs[3], path_to_geojson)
 
     plt.tight_layout()
-    plt.savefig(f'{path_to_save}buses_speed_distribution_{hour}.png')
+    plt.savefig(os.path.join(path_to_save, f'speed_visualization_{hour}.png'))
 
 

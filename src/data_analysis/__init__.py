@@ -1,1 +1,1 @@
-__all__ = ['bus_speed_analysis']
+__all__ = ['bus_speed_analysis', 'bus_punctuality_analysis']

@@ -9,7 +9,7 @@ def timetable_at_stop(stop_lines, folder_path='data/'):
 
     with open(f'{folder_path}timetable.csv', 'w') as file:
         csv_writer = csv.writer(file)
-        csv_writer.writerow(['Stop_Id', 'Stop_Nr', 'Lines', 'Timetable'])
+        csv_writer.writerow(['Stop_Id', 'Stop_Nr', 'Lines', 'Time'])
         for stop in stop_lines:
             stop_id = stop.get('stop_id', '')
             stop_nr = stop.get('stop_nr', '')
@@ -48,12 +48,6 @@ def lines_at_stop(stops, folder_path='data/'):
                     lines.append({'stop_id': stop_id, 'stop_nr': stop_nr, 'line': line['values'][0]['value']})
 
     timetable_at_stop(lines, folder_path)
-
-    with open(f'{folder_path}bus_lines_at_stops.csv', 'w') as file:
-        csv_writer = csv.writer(file)
-        csv_writer.writerow(['Stop_Id', 'Stop_Nr', 'Lines'])
-        for line in lines:
-            csv_writer.writerow([line['stop_id'], line['stop_nr'], line['line']])
 
 
 def get_bus_stops(folder_path='data/'):

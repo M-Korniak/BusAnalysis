@@ -1,4 +1,5 @@
 import argparse
+import os
 import src.data_visualization.bus_speed_visualization as bus_speed_visualization
 import src.data_visualization.traffic_jam_visualization as traffic_jam_visualization
 
@@ -17,8 +18,13 @@ def main():
                         help='file to save the visualization in')
     args = parser.parse_args()
 
-    bus_speed_visualization.plot_speed_visualization(args.path, args.output_folder)
-    traffic_jam_visualization.plot_traffic_jam(args.path, args.output_folder)
+    hour = args.path.split('_')[-1].split('.')[0]
+    new_folder = os.path.join(args.output_folder, f'bus_analysis_{hour}')
+    os.makedirs(new_folder, exist_ok=True)
+    args.output_folder = new_folder
+
+    bus_speed_visualization.plot_speed_visualization(args.path, new_folder)
+    traffic_jam_visualization.plot_traffic_jam(args.path, new_folder)
 
 
 if __name__ == '__main__':

@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import os
 import src.data_analysis.bus_speed_analysis as bus_speed_analysis
 import geopandas as gpd
 
@@ -52,7 +53,7 @@ def plot_traffic_jam(path='data/buses_localization_16:00.csv',
     plot_jammed_places(localizations, axs[1], axs[2], path_to_geojson, hour)
 
     plt.tight_layout()
-    plt.savefig(f'{path_to_save}traffic_jam_{hour}.png')
+    plt.savefig(os.path.join(path_to_save, f'traffic_jam_{hour}.png'))
 
 
 if __name__ == "__main__":
