@@ -15,6 +15,7 @@ def main():
 
     args = parser.parse_args()
 
+    print("It may take up to 20 minutes to collect data for bus stops")
     bus_stops.get_bus_stops(args.folder)
 
 

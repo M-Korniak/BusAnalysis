@@ -1,11 +1,11 @@
 import argparse
 from src.data_collection import bus_location
 
-
 # Run this
 # script in the terminal:
 # python scripts/collect_location.py --minutes 60 --folder data/
 # This will collect data for buses for 60 minutes and save it in the data/ folder
+
 
 def main():
     parser = argparse.ArgumentParser(description='Collect bus localization data')

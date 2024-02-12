@@ -14,7 +14,6 @@ def timetable_at_stop(stop_lines, folder_path='data/'):
             stop_id = stop.get('stop_id', '')
             stop_nr = stop.get('stop_nr', '')
             line = stop.get('line', '')
-            print(stop_id)
             if stop_id and stop_nr and line:
                 try:
                     data = requests.get(f'{url}&busstopId={stop_id}'
@@ -33,7 +32,7 @@ def lines_at_stop(stops, folder_path='data/'):
            '?id=88cd555f-6f31-43ca-9de4-66c479ad5942')
     lines = []
 
-    stops = random.sample(stops, 300)
+    stops = random.sample(stops, 500)
     for stop in stops:
         stop_id = stop.get('zespol', '')
         stop_nr = stop.get('slupek', '')
@@ -44,7 +43,6 @@ def lines_at_stop(stops, folder_path='data/'):
                 continue
             for line in data['result']:
                 if len(line['values'][0]['value']) == 3:
-                    print(stop_id, stop_nr, line['values'][0]['value'])
                     lines.append({'stop_id': stop_id, 'stop_nr': stop_nr, 'line': line['values'][0]['value']})
 
     timetable_at_stop(lines, folder_path)
